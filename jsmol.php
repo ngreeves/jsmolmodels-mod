@@ -1,6 +1,7 @@
+
 <script src="/tsugi/mod/openochem/js/jquery-1.11.1.min.js"></script>
 <script src="/tsugi/mod/openochem/js/jquery-ui.min.js"></script>
-<script src="/tsugi/mod/openochem/js/kekule_libs/dist/kekule.js?modules=widget"></script>
+<script src="/tsugi/mod/openochem/js/kekule_libs/dist/kekule.js?modules=widget&min=true"></script>
 
 <link rel="stylesheet" type="text/css" href="/tsugi/mod/openochem/js/kekule_libs/dist/themes/default/kekule.css" />
 <link rel="stylesheet" type="text/css" href="/tsugi/mod/openochem/css/eocustom.css" />
@@ -9,15 +10,20 @@
 
 
 <script type="text/javascript">
+
 	delete Jmol._tracker;
+
 	Jmol._isAsync = false;
+
                         // last update 2/18/2014 2:10:06 PM
                         var jmolApplet = "jmolApplet0";
                         var jmolApplet0; // set up in HTML table, below
+
                         jmol_isReady = function(applet) {
                         	//document.title = (applet._id + " - Jmol " + Jmol.___JmolVersion)
                         	Jmol._getElement(applet, "appletdiv").style.border="1px solid gray"
                         }		
+
                         var Info = {
                         	width: '100%',
                         	height: '100%',
@@ -43,6 +49,7 @@
 	                        //defaultModel: "$dopamine",
 	                        //console: "none", // default will be jmolApplet0_infodiv, but you can designate another div here or "none"
 	                    }
+
 	                    $(document).ready(function() {
 	                    	$("#jsmoldiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
 	                    })
@@ -70,14 +77,22 @@ Jmol version 14.7.5_2016.12.02  2016-12-02 07:03 EXTRACT: ({0:4})\n\
 M  END\n\
 ";
 */
+
+
 function jmv(scpt) { return Jmol.evaluateVar(jmolApplet0, scpt); }
 function exMod() { return jmstr("extractModel"); }
 function jmstr(scpt) { return Jmol.getPropertyAsString(jmolApplet0,scpt); }
+
+
 function trim(str) {
 	if (str != null) { return str.replace(/^\s+|\s+$/g, ""); }
 	return null;
 }
+
+
+
 function jmscript(scpt) { Jmol.script(jmolApplet0, scpt); }
+
 function mkResetMin() {
         /*
 	jmscript('unbind; unbind _wheelZoom; unbind "DOUBLE"; set picking off; set picking on; set allowRotateSelected false;');
@@ -85,6 +100,7 @@ function mkResetMin() {
         */
 	//writeHL("off");
 }
+
 function hasCharge() {
 	var pos = Math.abs(jmv("{*}.formalCharge.max"));
 	var neg = Math.abs(jmv("{*}.formalCharge.min"));
@@ -93,6 +109,8 @@ function hasCharge() {
 	}
 	return false;
 }
+
+
 /*
 function writeHL(val) {
 	if (val == "off") { val = ""; }
@@ -100,6 +118,10 @@ function writeHL(val) {
 	$("#hiddenLink").html(val);
 }
 */    
+
+
+
+
 function resetJsmol(){
         //jmscript('zap;');
 /*
@@ -126,8 +148,12 @@ function resetJsmol(){
         */
         //console.log(molfile);
         //Jmol.script(jmolApplet0,' data '+molfile+'; show data;' );
+
         Jmol.script(jmolApplet0,'set modelKitMode true; zap;' );
+
 }  
+
+
 function getEchoColor(hexcolor){
 	if (stereoToggle == 2) { return "white"; }
 	hexcolor = hexcolor.replace("#", "");
@@ -138,6 +164,7 @@ function getEchoColor(hexcolor){
 	//return (yiq >= 128) ? 'black' : 'white';
 	return 'blue';
 }      
+
 function echo(msg, loc, delay, font, color) {
 	msg = (!msg) ? "" : msg;
 	font = (!font) ? "18" : font;
@@ -156,6 +183,7 @@ function echo(msg, loc, delay, font, color) {
 		}
 		return null;
 	}
+
 	function typeCheck(typ) {
 		var typAppend = "";
 		if (typ == "ms" && (fileType == "mol" || fileType == "spartan")) {
@@ -193,6 +221,7 @@ function echo(msg, loc, delay, font, color) {
 		bootbox.alert("<div style='font-size:18px'><h4>CheMagic Model Kit: Feature Not Available</h4><p style='text-align:left'>Sorry, this feature is only available for " + typAppend + "</p></div>");
 		return false;
 	}
+
 	function promptAlt(t,v,c,d) {
 		d = (!d)?"":d;
 		keysOpen = true;
@@ -206,6 +235,7 @@ function echo(msg, loc, delay, font, color) {
 				} else {
 					result = trim(result);
 					if (c == "osrB") { bootbox.hideAll(); procBtn(d,result); }
+
 				}
 			}
 		});
@@ -222,6 +252,9 @@ function echo(msg, loc, delay, font, color) {
 	//if (cmd == "loadM") { c = "osrL"; }
 	promptAlt(t,v,c,appendArg);
 }
+
+
+
 function moveMol(num) {
 	if (!typeCheck("msp")) { return null; }
 	mkResetMin();
@@ -246,6 +279,8 @@ function moveMol(num) {
 		jmscript(scpt);
 	}
 }
+
+
 function deleteAtomBond(num) {
 	//if (!typeCheck("msp")) { return null; }
 	modelEdit = true;
@@ -265,6 +300,11 @@ function deleteAtomBond(num) {
             //console.log('hereb');
 	}
 }
+
+
+
+
+
 function procBtn(scpt,d) {
 	d=(!d)?"":d;
 	
@@ -273,6 +313,42 @@ function procBtn(scpt,d) {
 		if (!typeCheck("ms")) { return null; }
 		mkResetMin();
 		moveMol(4);
+		return null;
+	}
+	
+	
+	if (scpt == "ring3") {
+		mkResetMin();
+		jmscript('load async "$cyclopropane";;n = ({molecule=1}.length < {molecule=2}.length ? 2 : 1); select molecule=n;display selected;center selected');
+            
+		return null;
+	}
+	
+        if (scpt == "ring4") {
+		mkResetMin();
+		jmscript('load async "$cyclobutane";;n = ({molecule=1}.length < {molecule=2}.length ? 2 : 1); select molecule=n;display selected;center selected');
+            
+		return null;
+	}
+	
+	if (scpt == "ring5") {
+		mkResetMin();
+		jmscript('load async "$cyclopentane";;n = ({molecule=1}.length < {molecule=2}.length ? 2 : 1); select molecule=n;display selected;center selected');
+            
+		return null;
+	}
+	
+	if (scpt == "ring6") {
+		mkResetMin();
+		jmscript('load async "$cyclohexane";;n = ({molecule=1}.length < {molecule=2}.length ? 2 : 1); select molecule=n;display selected;center selected');
+            
+		return null;
+	}
+	
+	if (scpt == "ringar6") {
+		mkResetMin();
+		jmscript('load async "$benzene";;n = ({molecule=1}.length < {molecule=2}.length ? 2 : 1); select molecule=n;display selected;center selected');
+            
 		return null;
 	}
 	
@@ -308,6 +384,8 @@ function procBtn(scpt,d) {
 		jmscript(scpt);
 		return null;
 	}
+
+
 	if (scpt.substring(0, 4).toLowerCase() == "atom") {
 		mkResetMin();
 		modelEdit = true;
@@ -326,6 +404,7 @@ function procBtn(scpt,d) {
 		echo("Click an atom to replace it with " + atom + ". Also, click dragging |can be used to connect and add atoms.");
 		return null;
 	}
+
 	if (scpt.substring(0, 4).toLowerCase() == "bond")  {
 		mkResetMin();
 		modelEdit = true;
@@ -374,6 +453,9 @@ function procBtn(scpt,d) {
 	
 	
 }
+
+
+
 function stashUndo(str) {
 	str = (!str)?"":str;
 	var x; var y;
@@ -384,7 +466,11 @@ function stashUndo(str) {
 		x = undos.push(exMod());
 	}
 	y = undos.shift();
+
 }
+
+
+
 function LoadStructCallback(a,b,c,d,e,f,g,h) {
     console.log('LSCB');
     
@@ -393,6 +479,7 @@ function LoadStructCallback(a,b,c,d,e,f,g,h) {
     console.log(modelEdit);
     console.log(spart1);
     if (modelEdit) { return null; }
+
 /*
     if (spart1 == "OK" && spart2 == "OK") { fileType = "spartan"; spart1 = ""; spart2 = ""; jmscript("taVar1='';taVar2='';"); echo("Click GET Model File button to get |a loadable text file with MO and Charges."); return null;}
     if (spart1 == "1") { spart1 = "OK";jmscript("taVar1 = show('file');zap;load '@taVar1'"); }
@@ -427,13 +514,18 @@ function LoadStructCallback(a,b,c,d,e,f,g,h) {
 */
 	return null;
 }
+
+
 function StructureModifiedCallback(x, y, z) {
     console.log('SMCB');
+
     if (y > 0) {
     	stashUndo();
     	jmscript('select *; wireframe 0.15; spacefill 23%; boundbox {*};centerat boundbox; color label pink;set fontsize 12; label ""; select formalCharge <> 0;label %C;unbind; unbind "DOUBLE"; javascript stashMol(), set modelKitMode true;');
     }
 }
+
+
 function PickCallback(x, y, z) {
         //console.log('PICKCB');
 	//alert(x + "||||" + y + "||||" +  z);
@@ -451,6 +543,7 @@ function PickCallback(x, y, z) {
 		jmscript(scpt);
 	}
 }
+
 function stashMol() { // Set chemagicTEMP for model transfer data
 	if (stereoToggle == 2 ) { jmscript("stereo " + modelstereo + ";background " + stereoBkg + ";select hydrogen or carbon; select not selected;color label white;label %e; select formalCharge <> 0; label %C");  if (fileType == "cif" || fileType == "pdb") { jmscript('select *;label ""'); } }
 	if (fileType == "spartan" || fileType == "cif" || fileType == "pdb") { return null; }
@@ -460,6 +553,8 @@ function stashMol() { // Set chemagicTEMP for model transfer data
 	}
 	return null;
 }
+
+
 function echo(msg, loc, delay, font, color) {
 	msg = (!msg) ? "" : msg;
 	font = (!font) ? "18" : font;
@@ -478,11 +573,13 @@ function echo(msg, loc, delay, font, color) {
 		}
 		return null;
 	}
+
 	function getUndo() {
 		if (fileType != "mol") { return null; }
 		modelEdit = false;
 		var x; var y; var z; var stash;
 		stash = undos.pop();
+
 		z = undos.unshift("");
 		if (stash == null || stash == undefined || stash == "") { return false; }
 		x = redos.push(exMod());
@@ -491,6 +588,7 @@ function echo(msg, loc, delay, font, color) {
 		jmscript('var molf2 = "' + molf1 + '"; load "@molf2"; hover off;');
 		return true;
 	}    
+
 	function getRedo() {
 		if (fileType != "mol") { return null; }
 		var x; var y; var z; var stash;
@@ -503,6 +601,8 @@ function echo(msg, loc, delay, font, color) {
 		jmscript('var molf2 = "' + molf1 + '"; load "@molf2"; hover off;');
 		return true;
 	}    
+
+
 	function aClickActionP(num) {
 		if (!typeCheck("ms") && num == 1) { return null; }
 		if (fileType != "mol" && fileType != "spartan" && fileType != "cif") {
@@ -541,6 +641,18 @@ function aClickActionB(num, result) {
 	}
 	return null;
 }          
+
+
+
+
+
+
+button1.addEventListener('execute', function(){ alert('button1 executed'); });
+
+
+
+
+
 </script>
 
 
@@ -553,12 +665,16 @@ function aClickActionB(num, result) {
   max-height:500px;
   display:inline; /* needed for horiz. centering */
 }
+
+
 /*
+
 #home {
   width: 46px;
   height: 44px;
   background: url(img_navsprites.gif) 0 0;
 }
+
 .icon-jsmol_newdoc {
     background-image: url(images/chemWidgetColor.png);
     background-position: -468px 0;
@@ -574,37 +690,57 @@ function aClickActionB(num, result) {
  <div class="btn-toolbar" style="padding: 10px;" role="toolbar" aria-label="...">
 
 <!--
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Clear Structure" style="margin-bottom: 4px;" class="btn btn-default" onclick='jmscript("zap;");' ><i class="fa fa-minus-square"></i></button></a>
+
 			</div>
+
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Undo" style="margin-bottom: 4px;" class="btn btn-default" onclick='getUndo()' >&#x21B6;</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Redo" style="margin-bottom: 4px;" class="btn btn-default" onclick='getRedo()' >&#x21B7;</button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Zoom In" style="margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("zoomI")' ><i class="fa fa-search-plus"></i></button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Zoom Out" style="margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("zoomO")' ><i class="fa fa-search-minus"></i></button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Move molecule or atoms" style="margin-bottom: 4px;" class="btn btn-default" onclick='moveMol(1)' ><i class="fa fa-arrows-alt"></i> Move</button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Delete Atom/Bond" style="margin-bottom: 4px;" class="btn btn-default" onclick='deleteAtomBond(1)' ><i class="fa fa-eraser"></i></button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Rotate about bond/Set dihedral angle" style="margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("rotateB")' >&#9215;</button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" >
 					<button type="button"  title="Add H's"  class="btn btn-default" onclick='procBtn("correctH")' ><i class="fa fa-plus"></i> H's</button></a>
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Optimize Structure (MM)" style="margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("optimizeM")' ><i class="fa fa-motorcycle"></i></button></a>
+
 			</div>
+
 			
 -->
 	
@@ -643,39 +779,82 @@ function aClickActionB(num, result) {
 	    <button onclick='procBtn("atomO")' title="Add O" data-widget="Kekule.Widget.RadioButton"  class="Button atombtn" >O</button>
             <button onclick='procBtn("atomCl")' title="Add Cl" data-widget="Kekule.Widget.RadioButton"  class="Button atombtn" >Cl</button>
             <button onclick='procBtn("atomX")' title="Add other atoms" data-widget="Kekule.Widget.RadioButton"  class="Button atombtn" >X</button>
+            
+            <button id="ringbtn" class="GlyphButton" title="Ring structures tool" data-widget="Kekule.Widget.CompactButtonSet" data-text="Button4" data-show-text="false" data-button-set="#radioButtonGroup2"></button>
+            
+
+            
+            
           </div>
 
+
+            <div id="radioButtonGroup2" data-widget="Kekule.Widget.ButtonGroup" data-layout="1" style="horizontal-align: top">
+            <button onclick='procBtn("ring3")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-3" data-checked="true"></button>
+            <button onclick='procBtn("ring4")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-4" data-checked="true"></button>            
+            <button onclick='procBtn("ring5")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-5" data-checked="true"></button>            
+            <button onclick='procBtn("ring6")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-6" data-checked="true"></button>     
+            <button onclick='procBtn("ringar6")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-Ar-6" data-checked="true"></button>                   
+          </div>
+
+          
+
+
+
+<button type="button" class=" K-Widget K-Button K-NonSelectable K-No-Wrap K-Text-Hide K-Glyph-Show K-Layout-H K-Chem-MolRingIaController K-State-Active" title="Ring structures tool"><span class=" K-Content K-Glyph-Content K-Dynamic-Created K-Pri-Glyph-Content"></span><span class=" K-Content K-Text-Content K-Dynamic-Created">Rings</span><span class=" K-Content K-Glyph-Content K-Dynamic-Created K-Assoc-Glyph-Content"></span></button>
+
+
+
+
+
+
+
+
+
 <!--
+
 		<div class="btn-group-vertical" style="padding: 10px; display: inline-block; float: left;" role="toolbar" aria-label="...">
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  style="width: 0px; width: 40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomH")' >H</button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button" style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomC")' >C</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomN")' >N</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomO")' >O</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomCl")' >Cl</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("atomBr")' >Br</button></a>
+
 			</div>
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Choose other element types" title = "Other Atoms" style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='osrP("atomX")' >X</button></a>
+
 			</div>    
+
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Single bond" style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("bond1")' >-</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Double bond" style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("bond2")' >=</button></a>
+
 			</div>
 			<div  class="btn-group" role="group" aria-label="First group" >
 				<a href="#" ><button type="button"  title="Triple bond" style="width:40px; margin-bottom: 4px;" class="btn btn-default" onclick='procBtn("bond3")' >&#8801;</button></a>
+
 			</div>
 		</div> -->
 
@@ -686,4 +865,4 @@ function aClickActionB(num, result) {
 </div>
       <!-- <div class="col-xs-11"> -->
 
-
+      
