@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/jmol/jsmol/JSmol.min.js"></script>
 <!-- <script type="text/javascript" src="/tsugi/mod/openochem/js/bootstrap.min.js"></script> -->
 
-<script type="text/javascript" src="/tsugi/mod/jsmolmodels-mod/js/jsmol_editor.js"></script>
+<script type="text/javascript" src="/tsugi/mod/jsmolmodels/js/jsmol_editor.js"></script>
 
 
 
