@@ -66,7 +66,7 @@
             <button onclick='procBtn("atomCl")' title="Add Cl" data-widget="Kekule.Widget.RadioButton"  class="Button atombtn" >Cl</button>
             <button onclick='procBtn("atomX")' title="Add other atoms" data-widget="Kekule.Widget.RadioButton"  class="Button atombtn" >X</button>
             
-            <button id="ringbtn" class="GlyphButton" title="Ring structures tool" data-widget="Kekule.Widget.CompactButtonSet" data-text="Button4" data-show-text="false" data-button-set="#radioButtonGroup2"></button>
+            <button id="ringbtn" class="GlyphButton" title="Ring structures tool" data-widget="Kekule.Widget.CompactButtonSet" data-text="Button4" data-show-text="false" data-button-set="#radioButtonGroup2" class=" K-Widget K-Button K-NonSelectable K-No-Wrap K-Text-Hide K-Glyph-Show K-Layout-H K-Chem-MolRingIaController"></button>
             
 
             
@@ -75,11 +75,11 @@
 
 
             <div id="radioButtonGroup2" data-widget="Kekule.Widget.ButtonGroup" data-layout="1" style="horizontal-align: top">
-            <button onclick='procBtn("ring3")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-3" data-checked="true"></button>
-            <button onclick='procBtn("ring4")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-4" data-checked="true"></button>            
-            <button onclick='procBtn("ring5")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-5" data-checked="true"></button>            
-            <button onclick='procBtn("ring6")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-6" data-checked="true"></button>     
-            <button onclick='procBtn("ringar6")' data-widget="Kekule.Widget.RadioButton"  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-Ar-6" data-checked="true"></button>                   
+            <button onclick='procBtn("ring3")'  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-3" ></button>
+            <button onclick='procBtn("ring4")'  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-4" ></button>            
+            <button onclick='procBtn("ring5")'  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-5" ></button>            
+            <button onclick='procBtn("ring6")'  data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-6" ></button>     
+            <button onclick='procBtn("ringar6")' data-widget="Kekule.Widget.RadioButton" class="GlyphButton K-Chem-MolRingIaController-Ar-6" data-checked="true"></button>                   
           </div>
 
           

@@ -629,9 +629,3 @@ function aClickActionB(num, result) {
 	return null;
 }          
 
-
-
-
-
-
-button1.addEventListener('execute', function(){ alert('button1 executed'); });
