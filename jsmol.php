@@ -83,8 +83,12 @@
           </div>
 
           
-        <div id="jsmoldiv" style="display: inline-block; z-index: 400;"></div>
+        <div id="jsmoldiv" style="display: inline-block; z-index: 400;">
+        
+        </div>
+        <div>
         <a href="javascript:Jmol.loadFileFromDialog(jmolApplet0)">Load File</a>
+        </div>
 
 
 </div>
