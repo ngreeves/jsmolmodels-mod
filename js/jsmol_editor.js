@@ -629,3 +629,15 @@ function aClickActionB(num, result) {
 	return null;
 }          
 
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+$( "#jmolApplet0_submit" ).after( '<button onclick="Jmol.loadFileFromDialog(jmolApplet0)">Load File</button>' );
+});
+
+
+
+
+
+
+
